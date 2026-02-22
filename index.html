@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simardeep Singh — Data & Cloud Platform Strategy | Tokyo</title>
+<meta name="description" content="Data & cloud infrastructure across MetLife Japan, Woven by Toyota, and Rakuten. Enterprise data platforms in Tokyo.">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FAFAF8;
+    --bg-warm: #F4F2EE;
+    --bg-card: #FFFFFF;
+    --ink: #1A1A1A;
+    --ink-2: #333333;
+    --text: #555555;
+    --dim: #888888;
+    --muted: #BBBBBB;
+    --border: #E8E6E1;
+    --border-hover: #D0CEC8;
+    --accent: #2B3A4E;
+    --accent-light: #3D5168;
+    --serif: 'Source Serif 4', Georgia, serif;
+    --sans: 'DM Sans', -apple-system, sans-serif;
+    --mono: 'IBM Plex Mono', monospace;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection { background: var(--accent); color: white; }
+
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  /* ===== NAV ===== */
+  nav {
+    padding: 1.25rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .nav-name {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .nav-links { display: flex; gap: 1.75rem; list-style: none; }
+  .nav-links a {
+    color: var(--dim);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--ink); }
+
+  /* ===== HERO ===== */
+  .hero {
+    padding: 5rem 0 4rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .hero-inner {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 4rem;
+    align-items: start;
+  }
+  .hero-label {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--dim);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 1.25rem;
+  }
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(2.2rem, 3.8vw, 3rem);
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+  }
+  .hero-desc {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: var(--text);
+    line-height: 1.75;
+    margin-bottom: 2rem;
+    max-width: 520px;
+  }
+  .hero-links {
+    display: flex; gap: 0.5rem; flex-wrap: wrap;
+  }
+  .hero-links a {
+    display: inline-flex; align-items: center; gap: 0.3rem;
+    padding: 0.55rem 1.2rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .link-primary {
+    background: var(--accent);
+    color: white;
+  }
+  .link-primary:hover { background: var(--accent-light); }
+  .link-secondary {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--border);
+  }
+  .link-secondary:hover { border-color: var(--border-hover); color: var(--ink); }
+
+  /* Photo */
+  .hero-photo {
+    width: 240px; height: 300px;
+    border-radius: 10px;
+    overflow: hidden;
+    background: var(--bg-warm);
+    border: 1px solid var(--border);
+  }
+  .hero-photo img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+  }
+  .photo-placeholder {
+    width: 100%; height: 100%;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 0.5rem;
+  }
+  .photo-placeholder svg {
+    width: 48px; height: 48px; color: var(--muted);
+  }
+  .photo-placeholder span {
+    font-size: 0.7rem;
+    font-family: var(--mono);
+    color: var(--muted);
+  }
+
+  /* Stats bar */
+  .stats-bar {
+    display: flex;
+    gap: 2.5rem;
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .stat-item { text-align: center; }
+  .stat-num {
+    font-family: var(--serif);
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--ink);
+    letter-spacing: -0.02em;
+  }
+  .stat-label {
+    font-size: 0.72rem;
+    color: var(--dim);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-top: 0.1rem;
+  }
+
+  /* ===== SECTIONS ===== */
+  section { padding: 4rem 0; border-bottom: 1px solid var(--border); }
+  .section-label {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    color: var(--dim);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+  }
+  .section-title {
+    font-family: var(--serif);
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    margin-bottom: 0.5rem;
+  }
+  .section-desc {
+    color: var(--text);
+    font-size: 0.95rem;
+    max-width: 480px;
+    margin-bottom: 2.5rem;
+  }
+
+  /* ===== EXPERIENCE ===== */
+  .exp-list { display: flex; flex-direction: column; gap: 0; }
+  .exp-card {
+    padding: 1.75rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .exp-card:last-child { border-bottom: none; }
+  .exp-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 0.2rem;
+  }
+  .exp-company {
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .exp-via {
+    font-family: var(--sans);
+    font-weight: 400;
+    font-size: 0.85rem;
+    color: var(--dim);
+  }
+  .exp-date {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--dim);
+  }
+  .exp-role {
+    font-size: 0.88rem;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    font-weight: 500;
+  }
+  .exp-items { display: flex; flex-direction: column; gap: 0.4rem; }
+  .exp-item {
+    font-size: 0.88rem;
+    color: var(--text);
+    line-height: 1.65;
+    padding-left: 1rem;
+    position: relative;
+  }
+  .exp-item::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--muted);
+    font-size: 0.75rem;
+  }
+
+  /* ===== PROJECTS ===== */
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  .project-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.5rem;
+    transition: all 0.2s;
+  }
+  .project-card:hover {
+    border-color: var(--border-hover);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+  }
+  .p-org {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    color: var(--dim);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+  }
+  .p-title {
+    font-family: var(--serif);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 0.4rem;
+  }
+  .p-desc {
+    font-size: 0.85rem;
+    color: var(--text);
+    line-height: 1.65;
+    margin-bottom: 1rem;
+  }
+  .tags { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+  .tag {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    background: var(--bg-warm);
+    color: var(--dim);
+  }
+
+  /* ===== APPROACH ===== */
+  .approach-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  .approach-item { }
+  .approach-num {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    color: var(--muted);
+    margin-bottom: 0.75rem;
+  }
+  .approach-item h3 {
+    font-family: var(--serif);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+  .approach-item p {
+    font-size: 0.85rem;
+    color: var(--text);
+    line-height: 1.7;
+  }
+
+  /* ===== SKILLS ===== */
+  .skills-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+  .skill-group h3 {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    color: var(--dim);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .skill-group li {
+    list-style: none;
+    font-size: 0.85rem;
+    color: var(--text);
+    padding: 0.2rem 0;
+  }
+
+  /* ===== CTA ===== */
+  .cta {
+    padding: 5rem 0;
+    text-align: center;
+    border-bottom: none;
+  }
+  .cta .section-title { margin-bottom: 0.75rem; }
+  .cta-desc {
+    color: var(--text);
+    font-size: 1rem;
+    max-width: 440px;
+    margin: 0 auto 2rem;
+    line-height: 1.7;
+  }
+  .cta-links {
+    display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap;
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    padding: 1.5rem 0;
+    border-top: 1px solid var(--border);
+    text-align: center;
+  }
+  footer p {
+    font-size: 0.72rem;
+    color: var(--muted);
+  }
+
+  /* ===== ANIMATIONS ===== */
+  .reveal {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.5s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 768px) {
+    .container { padding: 0 1.25rem; }
+    nav { padding: 1rem 1.25rem; }
+    .hero { padding: 3rem 0; }
+    .hero-inner { grid-template-columns: 1fr; gap: 2rem; }
+    .hero-photo { width: 180px; height: 220px; }
+    .stats-bar { flex-wrap: wrap; gap: 1.5rem; }
+    section { padding: 3rem 0; }
+    .project-grid { grid-template-columns: 1fr; }
+    .approach-grid { grid-template-columns: 1fr; }
+    .skills-row { grid-template-columns: 1fr 1fr; }
+    .exp-top { flex-direction: column; gap: 0.15rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-name">Simardeep Singh</div>
+  <ul class="nav-links">
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="container">
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-label">Data & Cloud Platform Strategy · Tokyo</div>
+      <h1>I build the data infrastructure that enterprises run on.</h1>
+      <p class="hero-desc">
+        I've spent the last six years architecting data platforms and cloud infrastructure 
+        for Japan's major enterprises — MetLife, Woven by Toyota, Rakuten. 
+        I came to Japan as a language teacher and built a career bridging 
+        technical and business teams in both English and Japanese.
+      </p>
+      <div class="hero-links">
+        <a href="/cdn-cgi/l/email-protection#ecab89838b9e89958a8d828b96ac8b818d8580c28f8381" class="link-primary">Get in touch</a>
+        <a href="https://linkedin.com/in/simardeep-singh-221b34165" class="link-secondary">LinkedIn</a>
+        <a href="https://github.com/DEEP-SINGH-1991" class="link-secondary">GitHub</a>
+      </div>
+    </div>
+
+    <div class="hero-photo">
+      <!-- Replace with: <img src="headshot.jpg" alt="Simardeep Singh"> -->
+      <div class="photo-placeholder">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+          <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/>
+          <circle cx="12" cy="7" r="4"/>
+        </svg>
+        <span>Add photo</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat-item">
+    <div class="stat-num">4</div>
+    <div class="stat-label">Enterprises</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">3</div>
+    <div class="stat-label">Cloud Platforms</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">6+</div>
+    <div class="stat-label">Years in Tokyo</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">14</div>
+    <div class="stat-label">Rule Tables at Scale</div>
+  </div>
+</div>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label reveal">Career</div>
+  <h2 class="section-title reveal">Experience</h2>
+
+  <div class="exp-list">
+    <div class="exp-card reveal">
+      <div class="exp-top">
+        <div class="exp-company">MetLife Japan</div>
+        <div class="exp-date">Nov 2024 — Present</div>
+      </div>
+      <div class="exp-role">Data Scientist · Claims Analytics & Enterprise BI</div>
+      <div class="exp-items">
+        <div class="exp-item">Architected enterprise claims monitoring platform on Azure Synapse — millions of records, 14 rule tables</div>
+        <div class="exp-item">Led migration from Power BI Import Mode to DirectQuery for real-time operational analytics</div>
+        <div class="exp-item">Built dashboards used by claims operations leadership for day-to-day decisions</div>
+        <div class="exp-item">Delivered multi-cloud cost-performance benchmarks to leadership</div>
+      </div>
+    </div>
+
+    <div class="exp-card reveal">
+      <div class="exp-top">
+        <div class="exp-company">Woven by Toyota <span class="exp-via">via Toyota Tsusho Systems</span></div>
+        <div class="exp-date">Sep 2023 — Oct 2024</div>
+      </div>
+      <div class="exp-role">Solution Engineer · Cloud Platform Strategy & BI Optimization</div>
+      <div class="exp-items">
+        <div class="exp-item">Built client-side monitoring with ThousandEyes after a major outage — became the org's early warning system</div>
+        <div class="exp-item">Led BI tool audit across Looker, Power BI, and Tableau — presented recommendations to leadership</div>
+        <div class="exp-item">Designed multi-cloud analytics platform in GCP/BigQuery for budget compliance and cost monitoring</div>
+        <div class="exp-item">Built data pipelines and dashboards across GCP and Azure</div>
+      </div>
+    </div>
+
+    <div class="exp-card reveal">
+      <div class="exp-top">
+        <div class="exp-company">Rakuten</div>
+        <div class="exp-date">Dec 2022 — Apr 2023</div>
+      </div>
+      <div class="exp-role">System Engineer · SRE & DevOps</div>
+      <div class="exp-items">
+        <div class="exp-item">Built CI/CD pipelines on AWS, tuned Kubernetes on EKS, implemented GitOps</div>
+        <div class="exp-item">Monitored distributed systems with Datadog and CloudWatch</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label reveal">Work</div>
+  <h2 class="section-title reveal">Selected projects</h2>
+  <p class="section-desc reveal">Systems I designed and built to solve real business problems.</p>
+
+  <div class="project-grid">
+    <div class="project-card reveal">
+      <div class="p-org">MetLife Japan</div>
+      <div class="p-title">Claims Monitoring Platform</div>
+      <div class="p-desc">End-to-end analytics processing millions of claims across 14 rule tables on Azure Synapse. Migrated to DirectQuery for real-time monitoring used by operations leadership.</div>
+      <div class="tags">
+        <span class="tag">Azure Synapse</span>
+        <span class="tag">Power BI</span>
+        <span class="tag">DirectQuery</span>
+        <span class="tag">Python</span>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="p-org">Woven by Toyota</div>
+      <div class="p-title">Multi-Cloud Cost Platform</div>
+      <div class="p-desc">Built from zero: cloud consumption + Teams/Slack usage aggregated into BigQuery. Pipelines, transformation, and dashboards for budget compliance.</div>
+      <div class="tags">
+        <span class="tag">GCP</span>
+        <span class="tag">BigQuery</span>
+        <span class="tag">Azure</span>
+        <span class="tag">Looker</span>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="p-org">Woven by Toyota</div>
+      <div class="p-title">Outage Prevention System</div>
+      <div class="p-desc">After a major cloud outage causing significant losses, built the client-side monitoring platform that became the org's early warning infrastructure.</div>
+      <div class="tags">
+        <span class="tag">ThousandEyes</span>
+        <span class="tag">Monitoring</span>
+        <span class="tag">GCP</span>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="p-org">Personal</div>
+      <div class="p-title">MIMIC BOX</div>
+      <div class="p-desc">Custom data analysis and monitoring system — real-time ingestion, automated pipelines, and visualization dashboards.</div>
+      <div class="tags">
+        <span class="tag">Python</span>
+        <span class="tag">APIs</span>
+        <span class="tag">Automation</span>
+        <span class="tag">Analytics</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPROACH -->
+<section>
+  <div class="section-label reveal">Philosophy</div>
+  <h2 class="section-title reveal">How I think about data</h2>
+  <p class="section-desc reveal"></p>
+
+  <div class="approach-grid">
+    <div class="approach-item reveal">
+      <div class="approach-num">01</div>
+      <h3>Data serves decisions</h3>
+      <p>Every pipeline exists to help someone decide faster. If it doesn't connect to a business outcome, it shouldn't exist.</p>
+    </div>
+    <div class="approach-item reveal">
+      <div class="approach-num">02</div>
+      <h3>Cloud agnostic</h3>
+      <p>Production systems on Azure, GCP, and AWS. I pick platforms based on the problem — Synapse for BI, BigQuery for aggregation, EKS for orchestration.</p>
+    </div>
+    <div class="approach-item reveal">
+      <div class="approach-num">03</div>
+      <h3>Communication is the skill</h3>
+      <p>I present to leadership, bridge business and technical teams, and operate in English and Japanese. Most engineers build — fewer explain why it matters.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label reveal">Technical</div>
+  <h2 class="section-title reveal">Expertise</h2>
+
+  <div class="skills-row reveal">
+    <div class="skill-group">
+      <h3>Cloud</h3>
+      <ul>
+        <li>Azure Synapse, Data Factory</li>
+        <li>GCP BigQuery</li>
+        <li>AWS S3, EKS, Lambda</li>
+      </ul>
+    </div>
+    <div class="skill-group">
+      <h3>Data</h3>
+      <ul>
+        <li>Python, PySpark</li>
+        <li>SQL, PostgreSQL</li>
+        <li>Power BI, Looker, Tableau</li>
+      </ul>
+    </div>
+    <div class="skill-group">
+      <h3>Infrastructure</h3>
+      <ul>
+        <li>Kubernetes, Docker</li>
+        <li>Terraform, CI/CD</li>
+        <li>Datadog, ThousandEyes</li>
+      </ul>
+    </div>
+    <div class="skill-group">
+      <h3>Domain</h3>
+      <ul>
+        <li>Insurance Claims</li>
+        <li>FinOps / Cloud Cost</li>
+        <li>BI Strategy</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="contact" class="cta">
+  <div class="section-label reveal">Connect</div>
+  <h2 class="section-title reveal">Let's talk</h2>
+  <p class="cta-desc reveal">
+    Exploring senior data leadership in Tokyo — Head of Data, 
+    Director of Engineering, VP-level roles.
+  </p>
+  <div class="cta-links reveal">
+    <a href="/cdn-cgi/l/email-protection#cf88aaa0a8bdaab6a9aea1a8b58fa8a2aea6a3e1aca0a2" class="link-primary">Get in touch</a>
+    <a href="https://linkedin.com/in/simardeep-singh-221b34165" class="link-secondary">LinkedIn</a>
+    <a href="https://github.com/DEEP-SINGH-1991" class="link-secondary">GitHub</a>
+  </div>
+</section>
+
+</div>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2026 Simardeep Singh · Tokyo</p>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+  
