@@ -447,7 +447,7 @@
         automotive, and e-commerce at scale.
       </p>
       <div class="hero-links">
-        <a href="mailto:deep@deepsingh.io" class="link-primary">Get in touch</a>
+        <a href="/cdn-cgi/l/email-protection#67030202172703020217140e09000f490e08" class="link-primary">Get in touch</a>
         <a href="https://linkedin.com/in/simardeep-singh-221b34165" class="link-secondary">LinkedIn</a>
         <a href="https://github.com/DEEP-SINGH-1991" class="link-secondary">GitHub</a>
       </div>
@@ -665,7 +665,7 @@
     Director of Engineering, VP-level positions.
   </p>
   <div class="cta-links reveal">
-    <a href="mailto:deep@deepsingh.io" class="link-primary">Get in touch</a>
+    <a href="/cdn-cgi/l/email-protection#c6a2a3a3b686a2a3a3b6b5afa8a1aee8afa9" class="link-primary">Get in touch</a>
     <a href="https://linkedin.com/in/simardeep-singh-221b34165" class="link-secondary">LinkedIn</a>
     <a href="https://github.com/DEEP-SINGH-1991" class="link-secondary">GitHub</a>
   </div>
@@ -684,3 +684,11 @@ const obs = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.classList.add('visible');
+      obs.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
