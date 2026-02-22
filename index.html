@@ -93,19 +93,28 @@
   }
   .hero h1 {
     font-family: var(--serif);
-    font-size: clamp(2.2rem, 3.8vw, 3rem);
+    font-size: clamp(2.6rem, 5vw, 3.8rem);
     font-weight: 600;
     color: var(--ink);
-    line-height: 1.2;
-    letter-spacing: -0.02em;
-    margin-bottom: 1.5rem;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    margin-bottom: 1rem;
+  }
+  .hero-subtitle {
+    font-family: var(--serif);
+    font-size: 1.25rem;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--accent);
+    line-height: 1.5;
+    margin-bottom: 1.25rem;
   }
   .hero-desc {
-    font-family: var(--serif);
-    font-size: 1.1rem;
+    font-family: var(--sans);
+    font-size: 1rem;
     font-weight: 400;
     color: var(--text);
-    line-height: 1.75;
+    line-height: 1.7;
     margin-bottom: 2rem;
     max-width: 520px;
   }
@@ -429,16 +438,16 @@
 <div class="hero">
   <div class="hero-inner">
     <div>
-      <div class="hero-label">Data & Cloud Platform Strategy · Tokyo</div>
-      <h1>I build the data infrastructure that enterprises run on.</h1>
+      <div class="hero-label">Tokyo · Data Leadership</div>
+      <h1>Simardeep Singh</h1>
+      <p class="hero-subtitle">Data platforms & cloud infrastructure for enterprise.</p>
       <p class="hero-desc">
-        I've spent the last six years architecting data platforms and cloud infrastructure 
-        for Japan's major enterprises — MetLife, Woven by Toyota, Rakuten. 
-        I came to Japan as a language teacher and built a career bridging 
-        technical and business teams in both English and Japanese.
+        Eight years building the data systems behind MetLife Japan, Woven by Toyota, 
+        Rakuten, and Mitsubishi Group. Azure, AWS, GCP — across insurance, 
+        automotive, and e-commerce at scale.
       </p>
       <div class="hero-links">
-        <a href="/cdn-cgi/l/email-protection#ecab89838b9e89958a8d828b96ac8b818d8580c28f8381" class="link-primary">Get in touch</a>
+        <a href="mailto:deep@deepsingh.io" class="link-primary">Get in touch</a>
         <a href="https://linkedin.com/in/simardeep-singh-221b34165" class="link-secondary">LinkedIn</a>
         <a href="https://github.com/DEEP-SINGH-1991" class="link-secondary">GitHub</a>
       </div>
@@ -460,8 +469,12 @@
 <!-- STATS -->
 <div class="stats-bar">
   <div class="stat-item">
+    <div class="stat-num">8+</div>
+    <div class="stat-label">Years in Data Engineering</div>
+  </div>
+  <div class="stat-item">
     <div class="stat-num">4</div>
-    <div class="stat-label">Enterprises</div>
+    <div class="stat-label">Major Enterprises</div>
   </div>
   <div class="stat-item">
     <div class="stat-num">3</div>
@@ -470,10 +483,6 @@
   <div class="stat-item">
     <div class="stat-num">6+</div>
     <div class="stat-label">Years in Tokyo</div>
-  </div>
-  <div class="stat-item">
-    <div class="stat-num">14</div>
-    <div class="stat-label">Rule Tables at Scale</div>
   </div>
 </div>
 
@@ -490,7 +499,7 @@
       </div>
       <div class="exp-role">Data Scientist · Claims Analytics & Enterprise BI</div>
       <div class="exp-items">
-        <div class="exp-item">Architected enterprise claims monitoring platform on Azure Synapse — millions of records, 14 rule tables</div>
+        <div class="exp-item">Architected enterprise claims monitoring platform on Azure Synapse — processing millions of records across complex business rule sets</div>
         <div class="exp-item">Led migration from Power BI Import Mode to DirectQuery for real-time operational analytics</div>
         <div class="exp-item">Built dashboards used by claims operations leadership for day-to-day decisions</div>
         <div class="exp-item">Delivered multi-cloud cost-performance benchmarks to leadership</div>
@@ -535,7 +544,7 @@
     <div class="project-card reveal">
       <div class="p-org">MetLife Japan</div>
       <div class="p-title">Claims Monitoring Platform</div>
-      <div class="p-desc">End-to-end analytics processing millions of claims across 14 rule tables on Azure Synapse. Migrated to DirectQuery for real-time monitoring used by operations leadership.</div>
+      <div class="p-desc">End-to-end analytics processing millions of claims across complex business rule sets on Azure Synapse. Migrated to DirectQuery for real-time monitoring used by operations leadership.</div>
       <div class="tags">
         <span class="tag">Azure Synapse</span>
         <span class="tag">Power BI</span>
@@ -652,11 +661,11 @@
   <div class="section-label reveal">Connect</div>
   <h2 class="section-title reveal">Let's talk</h2>
   <p class="cta-desc reveal">
-    Exploring senior data leadership in Tokyo — Head of Data, 
-    Director of Engineering, VP-level roles.
+    Open to senior data leadership roles in Tokyo — Head of Data, 
+    Director of Engineering, VP-level positions.
   </p>
   <div class="cta-links reveal">
-    <a href="/cdn-cgi/l/email-protection#cf88aaa0a8bdaab6a9aea1a8b58fa8a2aea6a3e1aca0a2" class="link-primary">Get in touch</a>
+    <a href="mailto:deep@deepsingh.io" class="link-primary">Get in touch</a>
     <a href="https://linkedin.com/in/simardeep-singh-221b34165" class="link-secondary">LinkedIn</a>
     <a href="https://github.com/DEEP-SINGH-1991" class="link-secondary">GitHub</a>
   </div>
@@ -670,9 +679,8 @@
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 const obs = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.classList.add('visible');
-  
