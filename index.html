@@ -347,7 +347,7 @@
   /* ===== SKILLS ===== */
   .skills-row {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     gap: 2rem;
   }
   .skill-group h3 {
@@ -445,20 +445,118 @@
   }
   .reveal.visible { opacity: 1; transform: translateY(0); }
 
-  /* ===== RESPONSIVE ===== */
+  /* ===== HAMBURGER ===== */
+  .nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+  }
+  .nav-toggle span {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background: var(--ink);
+    margin: 4px 0;
+    transition: all 0.3s;
+  }
+  .nav-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(3px, 4px); }
+  .nav-toggle.active span:nth-child(2) { opacity: 0; }
+  .nav-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(3px, -4px); }
+
+  /* ===== RESPONSIVE — TABLET ===== */
+  @media (max-width: 900px) {
+    .skills-row { grid-template-columns: repeat(3, 1fr); }
+    .credentials-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  /* ===== RESPONSIVE — MOBILE ===== */
   @media (max-width: 768px) {
     .container { padding: 0 1.25rem; }
-    nav { padding: 1rem 1.25rem; }
-    .hero { padding: 3rem 0; }
-    .hero-inner { grid-template-columns: 1fr; gap: 2rem; }
-    .hero-photo { width: 180px; height: 220px; }
-    .stats-bar { flex-wrap: wrap; gap: 1.5rem; }
-    section { padding: 3rem 0; }
-    .project-grid { grid-template-columns: 1fr; }
-    .approach-grid { grid-template-columns: 1fr; }
-    .skills-row { grid-template-columns: 1fr 1fr; }
-    .credentials-grid { grid-template-columns: 1fr; }
+
+    /* Mobile nav */
+    nav { padding: 1rem 1.25rem; flex-wrap: wrap; }
+    .nav-toggle { display: block; }
+    .nav-links {
+      display: none;
+      width: 100%;
+      flex-direction: column;
+      gap: 0.75rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+      margin-top: 0.75rem;
+    }
+    .nav-links.open { display: flex; }
+    .nav-links a { font-size: 0.95rem; }
+
+    /* Hero */
+    .hero { padding: 2.5rem 0; }
+    .hero-inner { grid-template-columns: 1fr; gap: 1.5rem; }
+    .hero-inner > div:first-child { order: 2; }
+    .hero-photo { 
+      width: 140px; height: 175px; 
+      order: 1;
+      margin: 0 auto;
+    }
+    .hero h1 { font-size: 2rem; }
+    .hero-subtitle { font-size: 1.05rem; }
+    .hero-desc { font-size: 0.9rem; }
+    .hero-links { gap: 0.4rem; }
+    .hero-links a { padding: 0.5rem 1rem; font-size: 0.8rem; }
+
+    /* Stats */
+    .stats-bar { 
+      flex-wrap: wrap; 
+      gap: 1.25rem; 
+      justify-content: center;
+      padding: 1.5rem 0;
+    }
+    .stat-num { font-size: 1.5rem; }
+    .stat-label { font-size: 0.65rem; }
+
+    /* Sections */
+    section { padding: 2.5rem 0; }
+    .section-title { font-size: 1.35rem; }
+    .section-desc { font-size: 0.88rem; }
+
+    /* Experience */
     .exp-top { flex-direction: column; gap: 0.15rem; }
+    .exp-company { font-size: 1.05rem; }
+    .exp-role { font-size: 0.82rem; }
+    .exp-item { font-size: 0.82rem; }
+
+    /* Projects */
+    .project-grid { grid-template-columns: 1fr; }
+    .project-card { padding: 1.25rem; }
+
+    /* Approach */
+    .approach-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+
+    /* Skills */
+    .skills-row { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .skill-group:last-child {
+      grid-column: 1 / -1;
+    }
+
+    /* Credentials */
+    .credentials-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+
+    /* CTA */
+    .cta { padding: 3rem 0; }
+    .cta-email { font-size: 0.9rem; word-break: break-all; }
+    .cta-links { flex-direction: column; align-items: center; }
+  }
+
+  /* ===== RESPONSIVE — SMALL PHONES ===== */
+  @media (max-width: 400px) {
+    .hero h1 { font-size: 1.75rem; }
+    .stats-bar { gap: 1rem; }
+    .stat-item { min-width: 70px; }
+    .skills-row { grid-template-columns: 1fr; }
+    .skill-group:last-child { grid-column: auto; }
+    .hero-links { flex-direction: column; }
+    .hero-links a { width: 100%; justify-content: center; }
   }
 </style>
 </head>
@@ -466,6 +564,9 @@
 
 <nav>
   <div class="nav-name">Simardeep Singh</div>
+  <button class="nav-toggle" aria-label="Menu" onclick="this.classList.toggle('active');document.querySelector('.nav-links').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
   <ul class="nav-links">
     <li><a href="#experience">Experience</a></li>
     <li><a href="#projects">Projects</a></li>
@@ -731,6 +832,14 @@
         <li>BI Strategy</li>
       </ul>
     </div>
+    <div class="skill-group">
+      <h3>Blockchain</h3>
+      <ul>
+        <li>Bitcoin Protocol (Taproot, Ordinals, Runes)</li>
+        <li>Smart Contracts & DeFi Architecture</li>
+        <li>On-Chain Analytics</li>
+      </ul>
+    </div>
   </div>
 </section>
 
@@ -757,6 +866,10 @@
       <div class="cred-item">
         <div class="cred-name">Presales Associate Certification</div>
         <div class="cred-org">Siemens · 2022</div>
+      </div>
+      <div class="cred-item">
+        <div class="cred-name">Blockchain For Business</div>
+        <div class="cred-org">Blockchain Council · 2022</div>
       </div>
     </div>
     <div class="cred-group">
@@ -796,7 +909,7 @@
     Interested in how I can help your data organization? 
     I'm always open to a conversation.
   </p>
-  <div class="cta-email reveal">deep@deepsingh.io</div>
+  <div class="cta-email reveal"><a href="mailto:deep@deepsingh.io">deep@deepsingh.io</a></div>
   <div class="cta-links reveal">
     <a href="mailto:deep@deepsingh.io" class="link-primary">Get in touch</a>
     <a href="https://linkedin.com/in/simardeep-singh-221b34165" class="link-secondary"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg> LinkedIn</a>
@@ -814,12 +927,7 @@
 
 <script>
 const obs = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      obs.unobserve(entry.target);
-    }
-  });
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }});
 }, { threshold: 0.1 });
 document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 </script>
